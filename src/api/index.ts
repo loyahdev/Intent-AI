@@ -1,14 +1,16 @@
+import { config } from "dotenv";
+config({ override: true }); 
 import express from "express";
 import fetch from "node-fetch";
 import bodyParser from "body-parser";
-import { Configuration, OpenAIApi } from "openai";
+import OpenAI from "openai";
 
 const PORT = process.env.PORT || 4000;
 const LOCAL_URL = process.env.LOCAL_INTENT_URL || "http://localhost:8001/predict";
 
-const openai = new OpenAIApi(
-  new Configuration({ apiKey: process.env.OPENAI_API_KEY })
-);
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
 const app = express();
 app.use(bodyParser.json({ limit: "1mb" }));

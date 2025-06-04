@@ -3,3 +3,4 @@ venv/
 *.dylib
 *.safetensors
 .DS_Store
+.env
